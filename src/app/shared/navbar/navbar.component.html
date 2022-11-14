@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-family: Impact; letter-spacing: 2px; color: rgba(0,0,0,0.8)"
+       [routerLink]="['/home']">SHOWCASE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <ng-container *ngIf="(user$ | async) === null; else logOutTemplate">
+          <div>
+            <a class="nav-link" aria-current="page" [routerLink]="['sign-in']">Sign in</a>
+            <a class="nav-link" [routerLink]="['sign-up']">Sign up</a>
+          </div>
+        </ng-container>
+        <ng-template #logOutTemplate>
+          <div>
+            <a class="nav-link" [routerLink]="['/home']" (click)="onLogout()">Log out</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
